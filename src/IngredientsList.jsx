@@ -1,6 +1,6 @@
 import { Utensils } from "lucide-react";
 
-export default function IngredientsList({ ingredients, getRecipe, loading, onRemove }) {
+export default function IngredientsList({ ingredients, getRecipe, loading, onRemove, ref }) {
     const ingredientsListItems = ingredients.map((ingredient, index) => (
         <li key={index} className="ingredient-item">
             <span>{ingredient}</span>
@@ -19,7 +19,7 @@ export default function IngredientsList({ ingredients, getRecipe, loading, onRem
 
             {ingredients.length > 2 && (
                 <div className="get-recipe-container">
-                    <div>
+                    <div ref={ref}>
                         <h3>Ready for a recipe?</h3>
                         <p>Generate a recipe from your list of ingredients</p>
                     </div>

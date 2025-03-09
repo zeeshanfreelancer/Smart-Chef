@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./index.css";
 import IngredientsList from "./IngredientsList";
 import { getRecipeFromMistral } from "./ai";
@@ -12,12 +12,24 @@ export default function Main() {
     ]);
     const [recipe, setRecipe] = useState("");
     const [loading, setLoading] = useState(false);
+    const recipeSection = useRef(null);
+
+    useEffect(() => {
+        if (recipe && recipeSection.current) {
+            recipeSection.current.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [recipe]);
 
     async function fetchRecipe() {
         setLoading(true);
-        const recipeMarkdown = await getRecipeFromMistral(ingredients);
-        setRecipe(recipeMarkdown);
-        setLoading(false);
+        try {
+            const recipeMarkdown = await getRecipeFromMistral(ingredients);
+            setRecipe(recipeMarkdown);
+        } catch (error) {
+            toast.error("Failed to fetch recipe. Please try again.");
+        } finally {
+            setLoading(false);
+        }
     }
 
     function handleSubmit(event) {
@@ -33,7 +45,9 @@ export default function Main() {
     }
 
     function handleRemoveIngredient(ingredient) {
-        setIngredients(prevIngredients => prevIngredients.filter(item => item !== ingredient));
+        setIngredients(prevIngredients => 
+            prevIngredients.filter(item => item !== ingredient)
+        );
         toast.info(`${ingredient} removed.`);
     }
 
@@ -42,7 +56,7 @@ export default function Main() {
             <form onSubmit={handleSubmit} className="add-ingredient-form">
                 <input
                     type="text"
-                    placeholder="e.g Chicken"
+                    placeholder="e.g. Chicken"
                     aria-label="Add Ingredient"
                     name="ingredient"
                 />
@@ -51,6 +65,7 @@ export default function Main() {
 
             {ingredients.length > 0 && (
                 <IngredientsList
+                    ref={recipeSection}
                     ingredients={ingredients}
                     getRecipe={fetchRecipe}
                     loading={loading}
@@ -59,6 +74,7 @@ export default function Main() {
             )}
 
             {recipe && <ClaudeRecipe recipe={recipe} />}
+            
             <ToastContainer position="bottom-right" autoClose={3000} />
         </main>
     );
