@@ -1,12 +1,43 @@
-# React + Vite
+Smart Chef - AI-Powered Recipe Generator 🍳
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+https://zeeshanfreelancer.github.io/Smart-Chef/
 
-Currently, two official plugins are available:
+Smart Chef is an intuitive web application that generates custom recipes based on ingredients you have on hand. Powered by AI (Mistral), it helps home cooks and food enthusiasts discover creative meal ideas without needing to shop for additional ingredients.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Key Features ✨
+AI Recipe Generation: Get personalized recipes instantly using Mistral's AI capabilities
 
-## Expanding the ESLint configuration
+Ingredient Management: Easily add/remove ingredients from your virtual pantry
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Markdown Support: Recipes are beautifully formatted with React Markdown
+
+Responsive Design: Fully mobile-friendly interface that works on all devices
+
+Interactive UI: Smooth animations and toast notifications for great UX
+
+Accessibility: Built with ARIA labels and semantic HTML
+
+Technologies Used 🛠️
+Frontend: React.js, Vite
+
+Styling: CSS with responsive breakpoints
+
+Icons: Lucide React
+
+Notifications: React Toastify
+
+Markdown: React Markdown
+
+AI Integration: Custom Mistral API implementation
+
+Use Cases 🍽️
+Meal planning with existing pantry items
+
+Reducing food waste by using what you have
+
+Discovering new recipes based on available ingredients
+
+Quick meal ideas when you're short on time
+
+Perfect for home cooks, meal preppers, and anyone looking for culinary inspiration!
+
